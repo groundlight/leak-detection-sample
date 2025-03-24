@@ -1,2 +1,3 @@
-# leak-detection-demo
-Sample script for leak detection
+# Leak Detection Demo
+Sample script for leak detection using FrameGrab
+

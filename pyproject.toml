@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "leak-detection-demo"
+version = "0.1.0"
+description = ""
+authors = ["Harry Tung <honeytung@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+groundlight = "^0.22.3"
+framegrab = "^0.10.0"
+opencv-python = "4.9.0.80"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

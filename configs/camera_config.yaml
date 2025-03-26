@@ -1,0 +1,6 @@
+name: Kitchen Camera
+input_type: file_stream
+id:
+  filename: "PATH_TO_VIDEO_FILE"
+options:
+  max_fps: 5

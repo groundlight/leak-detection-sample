@@ -10,6 +10,9 @@ python = "^3.11"
 groundlight = "^0.22.3"
 framegrab = "^0.10.0"
 opencv-python = "4.9.0.80"
+pydantic = "^2.10.6"
+pyyaml = "^6.0.2"
+numpy = "1.26.4"
 
 
 [build-system]

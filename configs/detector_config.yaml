@@ -1,4 +1,0 @@
-leak_detectors:
-  detect_leaks: "det_"
-  count_leaks: "det_"
-  classify_leaks: "det_"

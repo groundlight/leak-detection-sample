@@ -3,7 +3,7 @@ import cv2
 import logging
 import numpy as np
 
-from framegrab import FrameGrabber
+from framegrab import FrameGrabber, MotionDetector
 from groundlight import Groundlight
 
 from config import config, camera_config_dict
@@ -17,6 +17,10 @@ if __name__ == "__main__":
 
     try:
         grabber = FrameGrabber.create_grabber(config=camera_config_dict)
+
+        if config.enable_motion_detection:
+            motion_detector = MotionDetector(pct_threshold=config.motion_detection_threshold)
+
     except Exception as e:
         logger.error(f"Error creating frame grabber: {e}", exc_info=True)
         sys.exit(1)
@@ -30,9 +34,17 @@ if __name__ == "__main__":
         logger.error(f"Error connecting to groundlight services: {e}", exc_info=True)
         sys.exit(1)
 
+    current_frame_num = 1
+
     while True:
         try:
             frame = grabber.grab()
+
+            if config.enable_motion_detection and not motion_detector.motion_detected(frame):
+                logger.info(f"No significant motion detected in frame {current_frame_num}, skipping frame.")
+                current_frame_num += 1
+                continue
+
         except Exception as e:
             logger.warning(f"Error grabbing frame. Possible end of file: {e}", exc_info=True)
             break
@@ -42,7 +54,7 @@ if __name__ == "__main__":
 
             if iq_detect_leaks.confidence_threshold < iq_detect_leaks.result.confidence and iq_detect_leaks.result.label == "YES":
                 logger.debug(f"Leak detected with confidence: {iq_detect_leaks.result.confidence}")
-                logger.debug(f"Sending frame to counting detector")
+                logger.debug("Sending frame to counting detector")
 
                 iq_count_leaks = gl.submit_image_query(detector=count_leaks, image=frame)
 
@@ -86,6 +98,9 @@ if __name__ == "__main__":
             cv2.imshow("Frame", frame)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
+
+            current_frame_num += 1
+            logger.info(f"Processed frame {current_frame_num}")
         except Exception as e:
             logger.error(f"Error processing frame: {e}", exc_info=True)
             break

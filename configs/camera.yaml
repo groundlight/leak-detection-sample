@@ -1,6 +1,4 @@
-name: Kitchen Camera
-input_type: file_stream
+name: RTSPCamera
+input_type: rtsp
 id:
-  filename: "PATH_TO_VIDEO_FILE"
-options:
-  max_fps: 5
+  rtsp_url: "YOUR_CAMERA_RTSP_URL"

@@ -11,9 +11,7 @@ from config import config, camera_config_dict
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    print(config.leak_detector_ids)
-
-    logger.info("Starting the frame grabber")
+    logger.info("Starting frame grabber")
 
     try:
         grabber = FrameGrabber.create_grabber(config=camera_config_dict)

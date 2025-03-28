@@ -2,7 +2,7 @@
 name = "leak-detection-demo"
 version = "0.1.0"
 description = ""
-authors = ["Harry Tung <honeytung@gmail.com>"]
+authors = ["Harry Tung <harry@groundlight.ai>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

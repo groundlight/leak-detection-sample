@@ -1,20 +1,20 @@
-[tool.poetry]
+[project]
 name = "leak-detection-demo"
 version = "0.1.0"
 description = ""
-authors = ["Harry Tung <harry@groundlight.ai>"]
+authors = [{ name = "Harry Tung", email = "harry@groundlight.ai" }]
+requires-python = "~=3.11"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-groundlight = "^0.22.3"
-framegrab = "^0.10.0"
-opencv-python = "4.9.0.80"
-pydantic = "^2.10.6"
-pyyaml = "^6.0.2"
-numpy = "1.26.4"
-
+dependencies = [
+    "framegrab>=0.10.0",
+    "groundlight>=0.22.3",
+    "numpy>=2.2.4",
+    "opencv-python>=4.11.0.86",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+include = ["*.py", "configs", "images", "output"]

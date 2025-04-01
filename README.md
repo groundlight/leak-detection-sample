@@ -6,10 +6,11 @@ Sample code for leak detection using FrameGrab and Groundlight ML services
 
 ## Running the Script
 
-You can install all the necessarily dependencies with `poetry` or `pip`
+You can install all the necessarily dependencies with `uv` or `pip`
 
 ```bash
-poetry install
+uv venv
+uv sync
 ```
 
 ```bash
@@ -56,7 +57,7 @@ After the modify the configuration files, the script can be ran with the followi
 
 Poetry
 ```bash
-poetry run python detect_leak.py
+uv run python detect_leak.py
 ```
 
 Pip

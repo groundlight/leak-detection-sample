@@ -13,24 +13,15 @@ logger = logging.getLogger(__name__)
 def main():
     logger.info("Starting frame grabber")
 
-    try:
-        grabber = FrameGrabber.create_grabber(config=camera_config_dict)
+    grabber = FrameGrabber.create_grabber(config=camera_config_dict)
 
-        if config.enable_motion_detection:
-            motion_detector = MotionDetector(pct_threshold=config.motion_detection_threshold)
+    if config.enable_motion_detection:
+        motion_detector = MotionDetector(pct_threshold=config.motion_detection_threshold)
 
-    except Exception as e:
-        logger.error(f"Error creating frame grabber: {e}", exc_info=True)
-        sys.exit(1)
-
-    try:
-        gl = Groundlight(endpoint=config.endpoint)
-        detect_leaks = gl.get_detector(id=config.leak_detector_ids.detect_leaks)
-        count_leaks = gl.get_detector(id=config.leak_detector_ids.count_leaks)
-        classify_leaks = gl.get_detector(id=config.leak_detector_ids.classify_leaks)
-    except Exception as e:
-        logger.error(f"Error connecting to groundlight services: {e}", exc_info=True)
-        sys.exit(1)
+    gl = Groundlight(endpoint=config.endpoint)
+    detect_leaks = gl.get_detector(id=config.leak_detector_ids.detect_leaks)
+    count_leaks = gl.get_detector(id=config.leak_detector_ids.count_leaks)
+    classify_leaks = gl.get_detector(id=config.leak_detector_ids.classify_leaks)
 
     current_frame_num = 1
 

@@ -1,7 +1,6 @@
 import sys
 import cv2
 import logging
-import numpy as np
 
 from framegrab import FrameGrabber, MotionDetector
 from groundlight import Groundlight
@@ -10,7 +9,8 @@ from config import config, camera_config_dict
 
 logger = logging.getLogger(__name__)
 
-if __name__ == "__main__":
+
+def main():
     logger.info("Starting frame grabber")
 
     try:
@@ -112,3 +112,7 @@ if __name__ == "__main__":
         except Exception as e:
             logger.error(f"Error processing frame: {e}", exc_info=True)
             break
+
+
+if __name__ == "__main__":
+    main()

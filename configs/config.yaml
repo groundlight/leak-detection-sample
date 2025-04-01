@@ -1,0 +1,7 @@
+endpoint: "https://api.groundlight.ai"
+leak_detector_ids:
+  detect_leaks: "det_"
+  count_leaks: "det_"
+  classify_leaks: "det_"
+enable_motion_detection: false
+motion_detection_threshold: 0.1

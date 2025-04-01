@@ -1,0 +1,4 @@
+name: RTSPCamera
+input_type: rtsp
+id:
+  rtsp_url: "YOUR_CAMERA_RTSP_URL"

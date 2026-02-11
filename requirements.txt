@@ -18,7 +18,7 @@ mdurl==0.1.2
 numpy==1.26.4
 onvif_zeep==0.2.12
 opencv-python==4.9.0.80
-pillow==11.1.0
+pillow==12.1.1
 platformdirs==4.3.7
 pydantic==2.10.6
 pydantic_core==2.27.2
